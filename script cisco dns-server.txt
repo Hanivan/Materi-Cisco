@@ -1,0 +1,48 @@
+//Copyright 2020. Lintasan Video
+Konfigurasi DNS Server (DHCP&RIP) di Cisco Packet Tracer: https://youtu.be/6IOWyl3MHKM
+
+***Jalur Server
+Router > en
+Router # conf t
+Router(config) # hostname R_TKJ
+R_TKJ (config) # enable password (isikan password)
+R_TKJ (config) # int fa0/0
+R_TKJ (config-if) # ip add (isikan IP dan Subnet)
+R_TKJ (config-if) # no sh
+R_TKJ (config-if) # ex
+R_TKJ (config) # router rip
+R_TKJ (config-router) # network (isikan IP network)
+R_TKJ (config-router) # ex
+R_TKJ (config) # ip dhcp pool (isikan nama dhcpnya)
+R_TKJ (dhcp-config) # network (isikan IP network dan subnet)
+R_TKJ (dhcp-config) # default-route (isikan IP gateway)
+R_TKJ (dhcp-config) # dns server (isikan IP server)
+R_TKJ (dhcp-config) # ex
+=========================================================
+***Jalur Switch
+R_TKJ (config) # int fa1/0 (nomor interface mengikuti type router)
+R_TKJ (config-if) # ip add (isikan IP dan Subnet)
+R_TKJ (config-if) # no sh
+R_TKJ (config-if) # ex
+R_TKJ (config) # router rip
+R_TKJ (config-router) # network (isikan IP network)
+R_TKJ (config-router) # ex
+R_TKJ (config) # ip dhcp pool (isikan nama dhcpnya)
+R_TKJ (dhcp-config) # network (isikan IP network dan subnet)
+R_TKJ (dhcp-config) # default-route (isikan IP gateway dari server)
+R_TKJ (dhcp-config) # dns server (isikan IP server)
+R_TKJ (dhcp-config) # ex
+=========================================================
+***Jalur Access Point
+R_TKJ (config) # int fa2/0 (nomor interface mengikuti type router)
+R_TKJ (config-if) # ip add (isikan IP dan Subnet)
+R_TKJ (config-if) # no sh
+R_TKJ (config-if) # ex
+R_TKJ (config) # router rip
+R_TKJ (config-router) # network (isikan IP network)
+R_TKJ (config-router) # ex
+R_TKJ (config) # ip dhcp pool (isikan nama dhcpnya)
+R_TKJ (dhcp-config) # network (isikan IP network dan subnet)
+R_TKJ (dhcp-config) # default-route (isikan IP gateway dari server)
+R_TKJ (dhcp-config) # dns server (isikan IP server)
+R_TKJ (dhcp-config) # ex
